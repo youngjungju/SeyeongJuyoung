@@ -19,3 +19,4 @@ void serchName(Student *s, int count); //이름 검색
 void serchnumber(Student *s, int count); //학번 검색
 void serchho(Student *s, int count); //호실 검색 
 
+//확인
