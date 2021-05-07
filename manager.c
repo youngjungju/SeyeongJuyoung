@@ -2,7 +2,7 @@
 #include <string.h>
 #include "pr.h"
 
-
+//늦은귀관 목록
 int selectMenu(){
     int snum;
     printf("\n*** 한동대 늦은귀관 관리 ***\n\n0. 종료\n1. 늦은귀관 조회\n2. 늦은귀관 추가\n3. 늦은귀관 정보 수정\n4. 늦은귀관 정보 삭제\n");
@@ -11,6 +11,7 @@ int selectMenu(){
     return snum;
 }
 
+//학생추가 
 int addStudent(Student *s){
     printf("이름은? : ");
     scanf(" %[^\n]",s->name);
@@ -22,10 +23,12 @@ int addStudent(Student *s){
     return 1;
 }
 
+//학생 읽기
 void readStudent(Student s){
     printf("%s %d %d\n",s.name,s.student_num,s.room_num);
 }
 
+//학생 목록
 void listStudent(Student* s, int count){
     printf("\nNo 이름 학번 호실\n");
     printf("*****************\n");
@@ -37,6 +40,7 @@ void listStudent(Student* s, int count){
     printf("\n");
 }
 
+//번호 선택
 int selectDataNo(Student* s, int count){
     int no;
     listStudent(s, count);
@@ -45,6 +49,7 @@ int selectDataNo(Student* s, int count){
     return no;
 }
 
+//학생 수정
 int updateStudent(Student *s){
     printf("새 이름은? : ");
     scanf(" %[^\n]",s->name);
@@ -55,11 +60,13 @@ int updateStudent(Student *s){
     return 1;
 }
 
+//학생 삭제
 int deleteStudent(Student *s){
     s->student_num = -1;
     return 1;
 }
 
+//
 int main(void){
     Student plist[100];
     int index = 0;
