@@ -83,7 +83,7 @@ int main(void){
             if(count == 0) continue;
         if(snum == 1) {listStudent(plist,count);}
         else if(snum == 2){
-            if(count>=1){
+            if(count>=100){//여기 1이어서 100으로 바꿨어         
                 printf("full !!\n");
                 continue;
             }
