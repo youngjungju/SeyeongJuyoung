@@ -5,7 +5,7 @@
 //늦은귀관 목록
 int selectMenu(){
     int snum;
-    printf("\n*** 한동대 늦은귀관 관리 ***\n\n0. 종료\n1. 늦은귀관 조회\n2. 늦은귀관 추가\n3. 늦은귀관 정보 수정\n4. 늦은귀관 정보 삭제\n");
+    printf("\n*** 한동대 늦은귀관 관리 ***\n\n0. 종료\n1. 늦은귀관 조회\n2. 늦은귀관 추가\n3. 늦은귀관 정보 수정\n4. 늦은귀관 정보 삭제\n5. 늦은귀관 정보저장\n");
     printf("\n=> 원하는 메뉴는? ");
     scanf("%d",&snum);
     return snum;
@@ -64,7 +64,23 @@ int updateStudent(Student *s){
 int deleteStudent(Student *s){
     s->student_num = -1;
     return 1;
+
 }
+
+
+void saveData(Student *s, int count){
+   FILE *fp;
+   int i;
+ 
+   fp=fopen("latecome.txt","wt");
+   for(i=0;i<count;i++){
+       if(s[i].student_num==-1) continue;
+       fprintf(fp,"%s %d %d\n",s[i].name,s[i].student_num,s[i].room_num);
+   }
+   fclose(fp);
+   printf("=>저장됨!\n");
+}
+
 
 //
 int main(void){
@@ -113,6 +129,11 @@ int main(void){
                 }
             }
         }
+	else if (snum==5){
+       saveData(plist,count);
+ 
+	   }
+
     }
     printf("종료됨!\n");
 
