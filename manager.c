@@ -67,7 +67,7 @@ int deleteStudent(Student *s){
 
 }
 
-
+//데이터 저장 
 void saveData(Student *s, int count){
    FILE *fp;
    int i;
@@ -82,6 +82,30 @@ void saveData(Student *s, int count){
 }
 
 
+//데이터 불러오기 
+int loadData(Student *s){
+    FILE *fp;
+    int i;
+
+    fp=fopen("latecome.txt","rt");
+    
+    if(fp==NULL){
+        printf("파일이 없습니다.");
+        return 0;
+    }
+    for(i=0;i<100;i++){
+        fscanf(fp,"%s %d %d",s[i].name,&s[i].student_num,&s[i].room_num);
+        if(feof(fp)) break;
+    }
+    fclose(fp);
+    if(i>0) printf("로딩성공!\n");
+    else printf("파일 없음");
+
+    return i;
+
+}
+
+
 //
 int main(void){
     Student plist[100];
@@ -89,7 +113,7 @@ int main(void){
     int count = 0;
     int snum; // selected number in Menu
 
-    //count = loadData(plist);
+    count = loadData(plist);
     index = count;
 
     while(1){
