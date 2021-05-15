@@ -5,7 +5,7 @@
 //늦은귀관 목록
 int selectMenu(){
     int snum;
-    printf("\n*** 한동대 늦은귀관 관리 ***\n\n0. 종료\n1. 늦은귀관 조회\n2. 늦은귀관 추가\n3. 늦은귀관 정보 수정\n4. 늦은귀관 정보 삭제\n5. 늦은귀관 정보저장\n");
+    printf("\n*** 한동대 늦은귀관 관리 ***\n\n0. 종료\n1. 늦은귀관 조회\n2. 늦은귀관 추가\n3. 늦은귀관 정보 수정\n4. 늦은귀관 정보 삭제\n5. 늦은귀관 정보저장\n6. 늦은귀관 정보 검색\n");
     printf("\n=> 원하는 메뉴는? ");
     scanf("%d",&snum);
     return snum;
@@ -104,6 +104,61 @@ int loadData(Student *s){
     return i;
 
 }
+//이름 검색
+void serchName(Student *s, int count){
+    int i;
+    char na[100];
+    printf("검색할 이름이 무엇인가요?");
+    scanf("%s",na);
+    int n;
+    for(i=0;i<count;i++){
+        if (s[i].student_num==-1) continue;
+        if(strstr(s[i].name,na)){
+            printf("%2d ",i+1);
+            readStudent(s[i]);
+            n++;
+        }
+    }
+    if(n==0) printf("검색된 데이터 없음\n");
+}
+
+//학번 검색
+void serchnumber(Student *s, int count){
+    int i;
+    int ns;
+    printf("검색할 학번이 무엇인가요?");
+    scanf("%d",&ns);
+    int n;
+    for(i=0;i<count;i++){
+        if (s[i].student_num==-1) continue;
+        if(s[i].student_num==ns){
+            printf("%2d ",i+1);
+            readStudent(s[i]);
+            n++;
+        }
+    }
+    if(n==0) printf("검색된 데이터 없음\n");
+    
+}
+
+//호실 검색 
+void serchho(Student *s, int count){
+    int i;
+    int nr;
+    printf("검색할 방번호는 무엇인가요?");
+    scanf("%d",&nr);
+    int n;
+    for(i=0;i<count;i++){
+        if (s[i].student_num==-1) continue;
+        if(s[i].student_num==nr){
+            printf("%2d ",i+1);
+            readStudent(s[i]);
+            n++;
+        }
+    }
+    if(n==0) printf("검색된 데이터 없음\n");
+    
+}
 
 
 //
@@ -157,8 +212,17 @@ int main(void){
        saveData(plist,count);
  
 	   }
+    else if(snum==6){
+        int search_num;
+        printf("무엇으로 검색하실 건가요? (1:이름,2:학번,3:방호수):");
+        scanf("%d",&search_num);
+        if(search_num==1) serchName(plist,index);
+        else if(search_num==2) serchnumber(plist,index);
+        else if (search_num==3) serchho(plist,index);
+    }
 
     }
+    
     printf("종료됨!\n");
 
     return 0;
