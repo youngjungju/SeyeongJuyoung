@@ -28,7 +28,7 @@ void readStudent(Student s){
     printf("%s %d %d\n",s.name,s.student_num,s.room_num);
 }
 
-//학생 목록
+//학생 목록   0개면 읽을 수 없다 추가하기 
 void listStudent(Student* s, int count){
     printf("\nNo 이름 학번 호실\n");
     printf("*****************\n");
