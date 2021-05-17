@@ -110,7 +110,7 @@ void serchName(Student *s, int count){
     char na[100];
     printf("검색할 이름이 무엇인가요?");
     scanf("%s",na);
-    int n;
+    int n = 0;
     for(i=0;i<count;i++){
         if (s[i].student_num==-1) continue;
         if(strstr(s[i].name,na)){
@@ -128,7 +128,7 @@ void serchnumber(Student *s, int count){
     int ns;
     printf("검색할 학번이 무엇인가요?");
     scanf("%d",&ns);
-    int n;
+    int n = 0;
     for(i=0;i<count;i++){
         if (s[i].student_num==-1) continue;
         if(s[i].student_num==ns){
@@ -147,10 +147,10 @@ void serchho(Student *s, int count){
     int nr;
     printf("검색할 방번호는 무엇인가요?");
     scanf("%d",&nr);
-    int n;
+    int n = 0;
     for(i=0;i<count;i++){
-        if (s[i].student_num==-1) continue;
-        if(s[i].student_num==nr){
+        if (s[i].room_num==-1) continue;
+        if(s[i].room_num==nr){
             printf("%2d ",i+1);
             readStudent(s[i]);
             n++;
